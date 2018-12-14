@@ -73,9 +73,10 @@ export default function withAnimation(WrappedComponent, indeterminateProgress) {
         : Math.min(Math.max(props.progress, 0), 1);
       if (progress !== this.progressValue) {
         if (props.animated) {
-          Animated.spring(this.state.progress, {
+          Animated.timing(this.state.progress, {
             toValue: progress,
-            bounciness: 0,
+            duration: 2000,
+            delay: 100
           }).start();
         } else {
           this.state.progress.setValue(progress);
